@@ -4,7 +4,9 @@
   <h2>Subheader</h2>
   <p>Subheader</p>
   <h3>Subheader</h3>
-  <p><a class="btn btn-primary btn-large">Wow, let's get started! &raquo;</a></p>
+  <p>
+    <%= link_to "Wow, let's get started! &raquo;".html_safe, new_user_registration_path, class: 'btn btn-primary btn-large' %>
+  </p>
 </div>
 
 <!-- Example row of columns -->

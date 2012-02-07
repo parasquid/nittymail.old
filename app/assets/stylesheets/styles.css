@@ -11,3 +11,13 @@ footer {
     height: 2.5em;
     z-index: 3;
 }
+
+.navbar .navbar-text a:hover.btn {
+    color: black;
+    background-color: #E6E6E6;
+}
+
+.navbar .navbar-text a:hover.btn.btn-primary {
+    color: white;
+    background-color: #04C;
+}
