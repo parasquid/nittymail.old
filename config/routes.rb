@@ -1,12 +1,14 @@
 Nittymail::Application.routes.draw do
-  get "users/show"
-
   root to: 'home#index'
 
-  match 'manage' => 'manage#index', as: :manage
+  get "users/show"
+  match 'unsubscribe' => 'subscribers#edit', as: 'edit_subscriber', via: :get
+  match 'manage' => 'manage#index', as: :manage, via: :get
 
   devise_for :users
+  devise_for :subscribers
 
   resources :users, only: [:show], path: ''
-
+  resources :subscribers, only: [:create, :update, :destroy]
+  
 end
