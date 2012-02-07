@@ -47,3 +47,4 @@ end
 gem 'mongoid'
 gem 'bson_ext'
 gem 'devise'
+gem 'mongoid_slug'

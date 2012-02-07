@@ -1,5 +1,8 @@
 class User
   include Mongoid::Document
+  include Mongoid::Slug
+  include Mongoid::Timestamps
+  
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -43,4 +46,5 @@ class User
   field :username,              :type => String, :null => false, :default => ""
   validates_presence_of :username
 
+  slug :username  
 end
