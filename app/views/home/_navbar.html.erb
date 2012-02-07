@@ -1,0 +1,33 @@
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="#">Project name</a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <% if user_signed_in? %>
+          <p class="navbar-text pull-right">
+            Logged in as <%= current_user.username %> <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn' %>
+          </p>
+        <% else %>
+          <div style="display">
+            <%= form_for 'user', url: user_session_path, html: {class: 'form-search navbar-text pull-right', style: 'margin-top: -2px'} do |f| %>
+              <%= f.text_field :username, placeholder: 'Username', class: 'input-small' %>
+              <%= f.password_field :password, placeholder: 'Password', class: 'input-small' %>
+              <%= f.submit 'Sign in', class: 'btn btn-primary', style: 'margin-top: 0px' %>
+            <% end %>
+          </div>
+        <% end %>
+      </div><!--/.nav-collapse -->
+    </div>
+  </div>
+</div>
+
