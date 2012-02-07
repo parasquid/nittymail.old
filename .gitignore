@@ -16,3 +16,5 @@
 
 *.komodoproject
 
+/nbproject/private/
+/.komodotools/

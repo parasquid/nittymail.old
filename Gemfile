@@ -35,3 +35,11 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
+
+platforms :jruby do
+  gem 'therubyrhino'
+end
+
+platforms :ruby do
+  gem 'therubyracer'
+end
