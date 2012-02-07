@@ -1,4 +1,11 @@
-<%= form_for Subscriber.new do |f| %>
-  <%= f.email_field :email %>
-  <%= f.submit %>
-<% end %>
+<div class="row">
+  <div class="span6 offset3">
+    <h3><%= @subscription.username.capitalize %>'s Newsletter</h3>
+    <div class="well">
+      <%= form_for Subscriber.new do |f| %>
+        <%= f.email_field :email, class: 'span4', placeholder: 'Enter you email address to subscribe' %>
+        <%= f.submit %>
+      <% end %>
+    </div>
+  </div>
+</div>
