@@ -13,4 +13,5 @@ class Subscriber
   field :authentication_token, :type => String
   
   field :email, type: String
+  validates_presence_of :email
 end
