@@ -43,3 +43,6 @@ end
 platforms :ruby do
   gem 'therubyracer'
 end
+
+gem 'mongoid'
+gem 'bson_ext'
