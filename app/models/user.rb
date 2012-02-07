@@ -47,5 +47,7 @@ class User
   field :username,              :type => String, :null => false, :default => ""
   validates_presence_of :username
 
-  slug :username  
+  slug :username
+  
+  has_and_belongs_to_many :subscribers
 end

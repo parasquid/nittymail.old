@@ -14,4 +14,6 @@ class Subscriber
   
   field :email, type: String
   validates_presence_of :email
+  
+  has_and_belongs_to_many :subscriptions, class_name: 'User'
 end
