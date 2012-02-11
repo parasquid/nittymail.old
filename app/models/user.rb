@@ -1,8 +1,10 @@
 class User
+  # also known as Subscription
+  
   include Mongoid::Document
   include Mongoid::Slug
   include Mongoid::Timestamps
-  
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -48,6 +50,6 @@ class User
   validates_presence_of :username
 
   slug :username
-  
+
   has_and_belongs_to_many :subscribers
 end

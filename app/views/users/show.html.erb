@@ -3,7 +3,8 @@
     <h3><%= @subscription.username.capitalize %>'s Newsletter</h3>
     <div class="well">
       <%= form_for Subscriber.new do |f| %>
-        <%= f.email_field :email, class: 'span4', placeholder: 'Enter you email address to subscribe' %>
+        <%= f.email_field :email, :class => 'span4', placeholder: 'Enter you email address to subscribe' %>
+        <%= hidden_field_tag 'subscription', @subscription.username %>
         <%= f.submit %>
       <% end %>
     </div>
