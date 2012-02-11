@@ -38,6 +38,8 @@ gem 'jquery-rails'
 
 platforms :jruby do
   gem 'therubyrhino'
+  gem 'kirk'
+  gem 'jruby-openssl'
 end
 
 platforms :ruby do
@@ -46,5 +48,6 @@ end
 
 gem 'mongoid'
 gem 'bson_ext'
-gem 'devise'
 gem 'mongoid_slug'
+
+gem 'devise'
