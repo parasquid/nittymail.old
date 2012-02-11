@@ -8,7 +8,7 @@ class SubscribersController < ApplicationController
     @subscriber.subscriptions << @subscription
     @subscriber.save!
 
-    # TODO: queue confirmation email
+    SUBSCRIBER_QUEUE.push(email: @subscriber.email, subscription: @subscription.username)
 
     flash[:email] = @subscriber.email
     redirect_to thank_you_for_subscribing_path
