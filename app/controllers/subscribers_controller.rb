@@ -7,6 +7,9 @@ class SubscribersController < ApplicationController
     # TODO: check if subscriber is already subscribed
     @subscriber.subscriptions << @subscription
     @subscriber.save!
+
+    # TODO: sign in this subscriber so he/she can edit their subscriptions
+    redirect_to edit_subscriber_path
   end
 
   def edit
