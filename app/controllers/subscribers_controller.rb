@@ -8,8 +8,10 @@ class SubscribersController < ApplicationController
     @subscriber.subscriptions << @subscription
     @subscriber.save!
 
-    # TODO: sign in this subscriber so he/she can edit their subscriptions
-    redirect_to edit_subscriber_path
+    # TODO: queue confirmation email
+
+    flash[:email] = @subscriber.email
+    redirect_to thank_you_for_subscribing_path
   end
 
   def edit
@@ -19,6 +21,10 @@ class SubscribersController < ApplicationController
   end
 
   def destroy
+  end
+
+  def thankyou
+    @email = flash[:email]
   end
 
   private

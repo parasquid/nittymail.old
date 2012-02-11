@@ -3,6 +3,7 @@ Nittymail::Application.routes.draw do
 
   get "users/show"
   match 'subscriptions' => 'subscribers#edit', as: 'edit_subscriber', via: :get
+  match 'thankyou' => 'subscribers#thankyou', as: 'thank_you_for_subscribing', via: :get
   match 'manage' => 'manage#index', as: :manage, via: :get
 
   devise_for :users
