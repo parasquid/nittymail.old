@@ -1,0 +1,2 @@
+class SendmailSetting < MailerSetting
+end

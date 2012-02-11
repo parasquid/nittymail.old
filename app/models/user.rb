@@ -1,6 +1,6 @@
 class User
   # also known as Subscription
-  
+
   include Mongoid::Document
   include Mongoid::Slug
   include Mongoid::Timestamps
@@ -48,6 +48,8 @@ class User
 
   field :username,              :type => String, :null => false, :default => ""
   validates_presence_of :username
+
+  embeds_one :mailer_setting
 
   slug :username
 

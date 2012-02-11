@@ -6,10 +6,13 @@ class SubscriberMailer < ActionMailer::Base
       @subscriber = Subscriber.where(email: msg[:email]).first
       @subscription = User.find_by_slug(msg[:subscription])
       print "sending opt-in email sent to #{@subscriber.email} ... "
-      mail(:to => @subscriber.email, :subject => "Registered", :from => "noreply@nittymail.com")
-      puts "success"
+      settings = (JSON.parse(@subscription.mailer_setting.to_json)).to_hash.symbolize_keys
+      ActionMailer::Base.smtp_settings = settings
+      mail(:to => @subscriber.email, :subject => "Registered")
+      puts "done"
     rescue Exception => e
       puts e.inspect
+      raise e
     end
   end
 end

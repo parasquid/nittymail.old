@@ -8,7 +8,9 @@ class SubscribersController < ApplicationController
     @subscriber.subscriptions << @subscription
     @subscriber.save!
 
-    SUBSCRIBER_QUEUE.push(email: @subscriber.email, subscription: @subscription.username)
+    msg = {email: @subscriber.email, subscription: @subscription.username}
+    SUBSCRIBER_QUEUE.push(msg)
+    #SubscriberMailer.opt_in_email(msg).deliver
 
     flash[:email] = @subscriber.email
     redirect_to thank_you_for_subscribing_path
