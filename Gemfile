@@ -51,3 +51,5 @@ gem 'bson_ext'
 gem 'mongoid_slug'
 
 gem 'devise'
+
+gem 'girl_friday'
