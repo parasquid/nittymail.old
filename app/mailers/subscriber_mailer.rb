@@ -23,6 +23,7 @@ class SubscriberMailer < ActionMailer::Base
       args = {}
       args[:email] = Subscriber.first.email
       args[:subscription] = User.first.username
+      args[:opt_in_token] = rand(36**64).to_s(36)
       SubscriberMailer.opt_in_email(args)
     end
   end

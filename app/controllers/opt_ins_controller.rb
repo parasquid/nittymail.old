@@ -1,5 +1,5 @@
 class OptInsController < ApplicationController
-  def edit
+  def confirm
     opt_in = OptIn.where(token: params[:opt_in_token], used: false) || not_found
     @subscriber = Subscriber.where(email: opt_in.subscriber)
     @subscription = User.find_by_slug(opt_in.subscription)

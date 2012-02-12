@@ -6,6 +6,7 @@ Nittymail::Application.routes.draw do
   match 'thankyou' => 'subscribers#thankyou', as: 'thank_you_for_subscribing', via: :get
   match 'already_subscribed' => 'subscribers#already_subscribed', as: 'already_subscribed', via: :get
   match 'manage' => 'manage#index', as: :manage, via: :get
+  match 'confirm_opt_in' => 'opt_ins#confirm', as: :confirm_opt_in, via: :get
 
   if Rails.env.development?
     mount SubscriberMailer::Preview => 'mail_view'
@@ -16,6 +17,5 @@ Nittymail::Application.routes.draw do
 
   resources :users, only: [:show], path: ''
   resources :subscribers, only: [:create, :update, :destroy]
-  resources :opt_ins, only: [:edit]
 
 end

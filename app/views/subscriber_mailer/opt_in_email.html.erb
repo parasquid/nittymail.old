@@ -1,2 +1,2 @@
 <h1>One more step ...</h1>
-<p>Please confirm your subscription to <%= link_to @subscription.username, edit_subscriber_url %></p>
+<p>Please confirm your subscription to <%= link_to @subscription.username, confirm_opt_in_url, opt_in_token: @opt_in_token %></p>
