@@ -5,7 +5,7 @@ class SubscribersController < ApplicationController
     @subscriber = Subscriber.find_or_create_by(params[:subscriber])
 
     unless @subscriber.subscriptions.include? @subscription
-      @opt_in_token = OptIn.generate_token @subscriber.email, @subscription.username
+      @opt_in_token = OptIn.generate_token @subscription.username, @subscriber.email
     else
       redirect_to already_subscribed_path and return
     end
