@@ -14,7 +14,7 @@ class SubscribersController < ApplicationController
     SUBSCRIBER_QUEUE.push(msg)
     #SubscriberMailer.opt_in_email(msg).deliver
 
-    flash[:email] = @subscriber.email
+    session[:email] = @subscriber.email
     redirect_to thank_you_for_subscribing_path
   end
 
