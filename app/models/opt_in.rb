@@ -11,7 +11,7 @@ class OptIn
   field :token, type: String
   validate_presence_of :token
 
-  field :used?, type: Boolean, default: false
+  field :used, type: Boolean, default: false
   validate_presence_of :used?
 
   def self.generate_token(subscription, subscriber)

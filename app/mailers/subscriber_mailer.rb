@@ -5,6 +5,7 @@ class SubscriberMailer < ActionMailer::Base
     begin
       @subscriber = Subscriber.where(email: msg[:email]).first
       @subscription = User.find_by_slug(msg[:subscription])
+      @opt_in_token = msg[:opt_in_token]
       print "sending opt-in email sent to #{@subscriber.email} ... "
       settings = (JSON.parse(@subscription.mailer_setting.to_json)).to_hash.symbolize_keys
       ActionMailer::Base.smtp_settings = settings

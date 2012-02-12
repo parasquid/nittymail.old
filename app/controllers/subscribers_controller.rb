@@ -5,15 +5,12 @@ class SubscribersController < ApplicationController
     @subscriber = Subscriber.find_or_create_by(params[:subscriber])
 
     unless @subscriber.subscriptions.include? @subscription
-      # add the subscriber to the mailing list
-      # TODO: confirm opt-in first!!
-      @subscriber.subscriptions << @subscription
-      @subscriber.save!
+      @opt_in_token = OptIn.generate_token @subscriber.email @subscription.username
     else
       redirect_to already_subscribed_path and return
     end
 
-    msg = {email: @subscriber.email, subscription: @subscription.username}
+    msg = {email: @subscriber.email, subscription: @subscription.username, opt_in_token: @opt_in_token}
     SUBSCRIBER_QUEUE.push(msg)
     #SubscriberMailer.opt_in_email(msg).deliver
 
