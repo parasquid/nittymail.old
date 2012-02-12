@@ -4,9 +4,14 @@ class SubscribersController < ApplicationController
   def create
     @subscriber = Subscriber.find_or_create_by(params[:subscriber])
 
-    # TODO: check if subscriber is already subscribed
-    @subscriber.subscriptions << @subscription
-    @subscriber.save!
+    unless @subscriber.subscriptions.include? @subscription
+      # add the subscriber to the mailing list
+      # TODO: confirm opt-in first!!
+      @subscriber.subscriptions << @subscription
+      @subscriber.save!
+    else
+      redirect_to already_subscribed_path and return
+    end
 
     msg = {email: @subscriber.email, subscription: @subscription.username}
     SUBSCRIBER_QUEUE.push(msg)
@@ -17,6 +22,7 @@ class SubscribersController < ApplicationController
   end
 
   def edit
+    @subscriber = Subscriber.where(authentication_token: params[:authentication_token]).first || not_found
   end
 
   def update
@@ -29,9 +35,14 @@ class SubscribersController < ApplicationController
     @email = flash[:email]
   end
 
+  def already_subscribed
+
+  end
+
   private
 
   def load_subscription
     @subscription = User.find_by_slug(params[:subscription])
   end
+
 end

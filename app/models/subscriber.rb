@@ -7,7 +7,7 @@ class Subscriber
   # :database_authenticatable, :registerable,
   #       :recoverable, :rememberable, :trackable, :validatable
 
-  devise  :token_authenticatable, authentication_keys: [:authentication_token]
+  devise :token_authenticatable, authentication_keys: [:authentication_token]
 
   ## Token authenticatable
   field :authentication_token, :type => String

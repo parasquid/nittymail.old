@@ -53,3 +53,5 @@ gem 'mongoid_slug'
 gem 'devise'
 
 gem 'girl_friday'
+
+gem 'mail_view'

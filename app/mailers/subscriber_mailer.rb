@@ -15,4 +15,15 @@ class SubscriberMailer < ActionMailer::Base
       raise e
     end
   end
+
+  class Preview < MailView
+    # Pull data from existing fixtures
+    def opt_in_email
+      args = {}
+      args[:email] = Subscriber.first.email
+      args[:subscription] = User.first.username
+      SubscriberMailer.opt_in_email(args)
+    end
+  end
+
 end
