@@ -12,11 +12,10 @@ class OptIn
   validates_presence_of :token
 
   field :used, type: Boolean, default: false
-  validates_presence_of :used
 
   def self.generate_token(subscription, subscriber)
     token = rand(36**64).to_s(36)
-    OptIn.create!(subscription: subscription, subscriber: subscriber, token: token, used: false)
+    OptIn.create!(subscription: subscription, subscriber: subscriber, token: token)
     token
   end
 end
