@@ -16,5 +16,6 @@ Nittymail::Application.routes.draw do
 
   resources :users, only: [:show], path: ''
   resources :subscribers, only: [:create, :update, :destroy]
+  resources :opt_ins, only: [:edit]
 
 end
