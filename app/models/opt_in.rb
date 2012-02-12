@@ -3,7 +3,7 @@ class OptIn
   include Mongoid::Timestamps
 
   field :subscription, type: String
-  validates_presence_of :subcription
+  validates_presence_of :subscription
 
   field :subscriber, type: String
   validates_presence_of :subscriber
