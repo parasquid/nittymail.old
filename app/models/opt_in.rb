@@ -16,7 +16,7 @@ class OptIn
 
   def self.generate_token(subscription, subscriber)
     token = rand(36**64).to_s(36)
-    OptIn.create!(subscription: subscription, subscriber: subscriber, token: token)
+    OptIn.create!(subscription: subscription, subscriber: subscriber, token: token, used: false)
     token
   end
 end
