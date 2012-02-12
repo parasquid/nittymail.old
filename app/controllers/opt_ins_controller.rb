@@ -1,6 +1,6 @@
 class OptInsController < ApplicationController
   def confirm
-    opt_in = OptIn.where(token: params[:opt_in_token], used: false) || not_found
+    opt_in = OptIn.where(token: params[:opt_in_token], used: false).first || not_found
     @subscriber = Subscriber.where(email: opt_in.subscriber)
     @subscription = User.find_by_slug(opt_in.subscription)
     # add the subscriber to the mailing list
