@@ -32,7 +32,7 @@ class SubscribersController < ApplicationController
   end
 
   def thankyou
-    @email = flash[:email]
+    @email = session[:email]
   end
 
   def already_subscribed
